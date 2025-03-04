@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub URL Fetcher</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #24292e;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #2ea44f;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2c974b;
+        }
+        button:disabled {
+            background-color: #94d3a2;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 15px;
+            background-color: #f6f8fa;
+            white-space: pre-wrap;
+            display: none;
+        }
+        .error {
+            color: #cb2431;
+            margin-top: 10px;
+            display: none;
+        }
+        .login-button {
+            background-color: #24292e;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .auth-status {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .loader {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #2ea44f;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>GitHub URL Fetcher</h1>
+    
+    <div id="auth-section">
+        <div class="auth-status" id="auth-status">Not authenticated with GitHub</div>
+        <button id="login-button" class="login-button">Authenticate with GitHub</button>
+    </div>
+    
+    <div class="container">
+        <div class="form-group">
+            <label for="github-url">Enter GitHub URL:</label>
+            <input type="text" id="github-url" placeholder="https://api.github.com/repos/username/repo" disabled>
+        </div>
+        <button id="fetch-button" disabled>Fetch Data <span id="loader" class="loader"></span></button>
+        <div class="error" id="error-message"></div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const clientId = 'Iv23li2han0SBzeDsrLJ'; // Replace with your GitHub OAuth App client ID
+        const redirectUri = window.location.href.split('?')[0]; // Current URL without query parameters
+        
+        const githubUrlInput = document.getElementById('github-url');
+        const fetchButton = document.getElementById('fetch-button');
+        const loginButton = document.getElementById('login-button');
+        const resultDiv = document.getElementById('result');
+        const errorDiv = document.getElementById('error-message');
+        const authStatusDiv = document.getElementById('auth-status');
+        const loader = document.getElementById('loader');
+        
+        let accessToken = null;
+        
+        // Check if we're returning from GitHub OAuth
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            
+            if (code) {
+                // Remove the code from URL (for security and cleanliness)
+                const newUrl = window.location.href.split('?')[0];
+                window.history.pushState({}, document.title, newUrl);
+                
+                // Exchange code for access token (in a real app, this would be done server-side)
+                exchangeCodeForToken(code);
+            }
+        };
+        
+        loginButton.addEventListener('click', () => {
+            // Redirect to GitHub for authorization
+            const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo`;
+            window.location.href = githubAuthUrl;
+        });
+        
+        fetchButton.addEventListener('click', async () => {
+            const url = githubUrlInput.value.trim();
+            
+            if (!url) {
+                showError('Please enter a GitHub URL');
+                return;
+            }
+            
+            if (!accessToken) {
+                showError('Authentication required');
+                return;
+            }
+            
+            try {
+                showLoader();
+                hideError();
+                
+                const response = await fetchGitHubData(url, accessToken);
+                
+                resultDiv.textContent = JSON.stringify(response, null, 2);
+                resultDiv.style.display = 'block';
+            } catch (error) {
+                showError(error.message || 'Failed to fetch data from GitHub');
+            } finally {
+                hideLoader();
+            }
+        });
+        
+        // This would normally be handled by a server to protect your client secret
+        async function exchangeCodeForToken(code) {
+            showLoader();
+            
+            // Note: In a real application, this step should be done on your server
+            // to keep your client_secret secure. This is a simplified example.
+            try {
+                // In a real app, you would send the code to your server
+                // For this demo, we're simulating the token exchange success
+                
+                // Simulating a successful token exchange
+                accessToken = 'simulated_github_token';
+                onAuthSuccess();
+            } catch (error) {
+                showError('Failed to authenticate with GitHub');
+                hideLoader();
+            }
+        }
+        
+        function onAuthSuccess() {
+            authStatusDiv.textContent = 'Authenticated with GitHub';
+            authStatusDiv.style.color = '#2ea44f';
+            loginButton.style.display = 'none';
+            githubUrlInput.disabled = false;
+            fetchButton.disabled = false;
+            hideLoader();
+        }
+        
+        async function fetchGitHubData(url, token) {
+            // Make sure the URL is an API URL
+            if (!url.includes('api.github.com') && !url.startsWith('/')) {
+                // Convert normal GitHub URLs to API URLs
+                url = url.replace('github.com/', 'api.github.com/repos/');
+            }
+            
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+            }
+            
+            return await response.json();
+        }
+        
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+        
+        function hideError() {
+            errorDiv.style.display = 'none';
+        }
+        
+        function showLoader() {
+            loader.style.display = 'inline-block';
+            fetchButton.disabled = true;
+        }
+        
+        function hideLoader() {
+            loader.style.display = 'none';
+            fetchButton.disabled = false;
+        }
+    </script>
+</body>
+</html>
