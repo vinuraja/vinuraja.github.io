@@ -107,7 +107,8 @@
     <script>
         const clientId = 'Iv23li2han0SBzeDsrLJ'; // Replace with your GitHub OAuth App client ID
         const clientSecret = 'bf816ac07b67533fae6f09ad2acb7f61c5475c3d'
-        const redirectUri = 'http://localhost:8080'; // Current URL without query parameters
+        // const redirectUri = 'http://localhost:8080'; // Current URL without query parameters
+        const redirectUri = window.location.href;
         
         const githubUrlInput = document.getElementById('github-url');
         const fetchButton = document.getElementById('fetch-button');
@@ -122,8 +123,8 @@
         // Check if we're returning from GitHub OAuth
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            // const code = urlParams.get('code');
-            const code = '98ff776ca94471ba355e'
+            const code = urlParams.get('code');
+            // const code = '98ff776ca94471ba355e'
             
             if (code) {
                 // Remove the code from URL (for security and cleanliness)
