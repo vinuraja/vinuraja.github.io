@@ -226,12 +226,14 @@
                 // Convert normal GitHub URLs to API URLs
                 // url = url.replace('github.com/', 'api.github.com/repos/');
             }
+            // Add CORS everywhere
+            url = 'https://aqueous-tundra-93546-9ed4a77c9d08.herokuapp.com/' + url
             
             const response = await fetch(url, {
                 // mode: 'no-cors',
                 headers: {
                     'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/vnd.github.v3+json'
+                    'Accept': 'application/vnd.github+json'
                 }
             });
             
