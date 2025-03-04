@@ -106,7 +106,8 @@
 
     <script>
         const clientId = 'Iv23li2han0SBzeDsrLJ'; // Replace with your GitHub OAuth App client ID
-        const redirectUri = window.location.href.split('?')[0]; // Current URL without query parameters
+        const clientSecret = 'bf816ac07b67533fae6f09ad2acb7f61c5475c3d'
+        const redirectUri = 'http://localhost:8080'; // Current URL without query parameters
         
         const githubUrlInput = document.getElementById('github-url');
         const fetchButton = document.getElementById('fetch-button');
@@ -121,7 +122,8 @@
         // Check if we're returning from GitHub OAuth
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
+            // const code = urlParams.get('code');
+            const code = '98ff776ca94471ba355e'
             
             if (code) {
                 // Remove the code from URL (for security and cleanliness)
@@ -169,22 +171,44 @@
         
         // This would normally be handled by a server to protect your client secret
         async function exchangeCodeForToken(code) {
-            showLoader();
-            
-            // Note: In a real application, this step should be done on your server
-            // to keep your client_secret secure. This is a simplified example.
-            try {
-                // In a real app, you would send the code to your server
-                // For this demo, we're simulating the token exchange success
-                
-                // Simulating a successful token exchange
-                accessToken = 'simulated_github_token';
-                onAuthSuccess();
-            } catch (error) {
-                showError('Failed to authenticate with GitHub');
-                hideLoader();
+          showLoader();
+    
+          const data = {
+            client_id: clientId,
+            client_secret: clientSecret,
+            code: code,
+            redirect_uri: redirectUri,
+          };
+    
+          try {
+            const response = await fetch('https://github.com/login/oauth/access_token', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+    
+            if (!response.ok) {
+              throw new Error('Failed to exchange code for access token');
             }
+    
+            const tokenData = await response.json();
+    
+            if (tokenData.error) {
+              throw new Error(tokenData.error_description || 'OAuth exchange error');
+            }
+    
+            accessToken = tokenData.access_token;
+            onAuthSuccess();
+          } catch (error) {
+            showError('Failed to authenticate with GitHub: ' + error.message);
+          } finally {
+            hideLoader();
+          }
         }
+
         
         function onAuthSuccess() {
             authStatusDiv.textContent = 'Authenticated with GitHub';
@@ -199,13 +223,14 @@
             // Make sure the URL is an API URL
             if (!url.includes('api.github.com') && !url.startsWith('/')) {
                 // Convert normal GitHub URLs to API URLs
-                url = url.replace('github.com/', 'api.github.com/repos/');
+                // url = url.replace('github.com/', 'api.github.com/repos/');
             }
             
             const response = await fetch(url, {
+                // mode: 'no-cors',
                 headers: {
                     'Authorization': `token ${token}`,
-                    'Accept': 'application/vnd.github.v3+json'
+                    // 'Accept': 'application/vnd.github.v3+json'
                 }
             });
             
