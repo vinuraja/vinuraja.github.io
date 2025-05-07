@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 1040EZ - (Illustrative)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-section-title {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            margin-top: 1.5rem; /* mt-6 */
+            margin-bottom: 1rem; /* mb-4 */
+            border-bottom-width: 2px;
+            padding-bottom: 0.5rem; /* pb-2 */
+        }
+        .form-label {
+            display: block;
+            font-weight: 500; /* font-medium */
+            margin-bottom: 0.25rem; /* mb-1 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.5rem; /* p-2 */
+            border-width: 1px;
+            border-color: #D1D5DB; /* border-gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .form-input-sm {
+            width: auto;
+            padding: 0.5rem;
+            border-width: 1px;
+            border-color: #D1D5DB;
+            border-radius: 0.375rem;
+        }
+        .checkbox-label {
+            margin-left: 0.5rem; /* ml-2 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .disclaimer {
+            background-color: #FEF2F2; /* bg-red-50 */
+            color: #B91C1C; /* text-red-700 */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.375rem; /* rounded-md */
+            margin-bottom: 1.5rem; /* mb-6 */
+            border: 1px solid #F87171; /* border-red-300 */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-xl">
+
+        <div class="disclaimer">
+            <p class="font-bold">Important Notice:</p>
+            <p>Form 1040EZ was discontinued after the 2017 tax year. This HTML representation is for illustrative and educational purposes only. <strong>Do NOT use this form for filing taxes.</strong> Please refer to the official IRS website for current tax forms and information.</p>
+        </div>
+
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold">Form 1040EZ</h1>
+            <p class="text-lg text-gray-600">Income Tax Return for Single and Joint Filers With No Dependents (Illustrative - For Tax Year 2017 and Prior)</p>
+        </header>
+
+        <form action="#" method="POST"> <section>
+                <h2 class="form-section-title">Your Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <label for="first_name" class="form-label">Your first name and initial</label>
+                        <input type="text" id="first_name" name="first_name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="last_name" class="form-label">Last name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-input">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <label for="ssn" class="form-label">Your social security number</label>
+                        <input type="text" id="ssn" name="ssn" class="form-input" placeholder="XXX-XX-XXXX">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                     <div>
+                        <label for="spouse_first_name" class="form-label">Spouse's first name and initial (if joint return)</label>
+                        <input type="text" id="spouse_first_name" name="spouse_first_name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="spouse_last_name" class="form-label">Spouse's last name (if joint return)</label>
+                        <input type="text" id="spouse_last_name" name="spouse_last_name" class="form-input">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="spouse_ssn" class="form-label">Spouse's social security number (if joint return)</label>
+                        <input type="text" id="spouse_ssn" name="spouse_ssn" class="form-input" placeholder="XXX-XX-XXXX">
+                    </div>
+                </div>
+                <div>
+                    <label for="home_address" class="form-label">Home address (number and street). If you have a P.O. box, see instructions.</label>
+                    <input type="text" id="home_address" name="home_address" class="form-input mb-2">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="city" class="form-label">City, town or post office</label>
+                            <input type="text" id="city" name="city" class="form-input">
+                        </div>
+                        <div>
+                            <label for="state" class="form-label">State</label>
+                            <input type="text" id="state" name="state" class="form-input">
+                        </div>
+                        <div>
+                            <label for="zip_code" class="form-label">ZIP code</label>
+                            <input type="text" id="zip_code" name="zip_code" class="form-input">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6">
+                 <h2 class="form-section-title">Presidential Election Campaign</h2>
+                 <p class="text-sm text-gray-700 mb-2">Check here if you, or your spouse if filing jointly, want $3 to go to this fund. Checking a box below will not change your tax or refund.</p>
+                 <div class="flex items-center mb-2">
+                    <input id="you_election_fund" name="you_election_fund" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="you_election_fund" class="checkbox-label">You</label>
+                 </div>
+                 <div class="flex items-center">
+                    <input id="spouse_election_fund" name="spouse_election_fund" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="spouse_election_fund" class="checkbox-label">Spouse</label>
+                 </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Income</h2>
+                <p class="text-xs text-gray-500 mb-4">Attach Form(s) W-2 here. Enclose, but do not attach, any payment. </p>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label for="wages" class="form-label flex-grow">1. Wages, salaries, and tips. This should be shown in box 1 of your Form(s) W-2. Attach your Form(s) W-2.</label>
+                        <input type="text" id="wages" name="wages" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="taxable_interest" class="form-label flex-grow">2. Taxable interest. If the total is over $1,500, you cannot use Form 1040EZ.</label>
+                        <input type="text" id="taxable_interest" name="taxable_interest" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="unemployment_comp" class="form-label flex-grow">3. Unemployment compensation and Alaska Permanent Fund dividends. See instructions.</label>
+                        <input type="text" id="unemployment_comp" name="unemployment_comp" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between font-semibold">
+                        <label for="agi" class="form-label flex-grow">4. Add lines 1, 2, and 3. This is your adjusted gross income (AGI).</label>
+                        <input type="text" id="agi" name="agi" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00" readonly>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Deduction and Tax</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-grow">
+                            <label for="deduction" class="form-label">5. If you can be claimed as a dependent by someone else, or if you are married filing jointly and your spouse can be claimed, check the applicable box(es) below and use the worksheet on back. Otherwise, if single or married filing separately, enter $10,400 (for 2017). If married filing jointly, enter $20,800 (for 2017). See back for details.</label>
+                             <div class="mt-2 space-x-4">
+                                <input type="checkbox" id="dependent_you" name="dependent_you" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                <label for="dependent_you" class="checkbox-label">You</label>
+                                <input type="checkbox" id="dependent_spouse" name="dependent_spouse" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                <label for="dependent_spouse" class="checkbox-label">Spouse</label>
+                            </div>
+                        </div>
+                        <input type="text" id="deduction_amount" name="deduction_amount" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="taxable_income" class="form-label flex-grow">6. Subtract line 5 from line 4. If line 5 is larger than line 4, enter -0-. This is your taxable income.</label>
+                        <input type="text" id="taxable_income" name="taxable_income" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00" readonly>
+                    </div>
+                     <div class="flex items-center justify-between">
+                        <label for="federal_tax_withheld" class="form-label flex-grow">7. Federal income tax withheld from Form(s) W-2 and 1099.</label>
+                        <input type="text" id="federal_tax_withheld" name="federal_tax_withheld" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="eic" class="form-label flex-grow">8a. Earned income credit (EIC). See instructions.</label>
+                        <input type="text" id="eic" name="eic" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="combat_pay" class="form-label flex-grow">8b. Nontaxable combat pay election. See instructions.</label>
+                        <input type="text" id="combat_pay" name="combat_pay" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between font-semibold">
+                        <label for="total_payments_credits" class="form-label flex-grow">9. Add lines 7 and 8a. These are your total payments and credits.</label>
+                        <input type="text" id="total_payments_credits" name="total_payments_credits" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00" readonly>
+                    </div>
+                     <div class="flex items-center justify-between">
+                        <label for="tax_amount" class="form-label flex-grow">10. Tax. Use the Tax Table in the instructions to find the tax on the amount on line 6.</label>
+                        <input type="text" id="tax_amount" name="tax_amount" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="health_care_individual_responsibility" class="form-label flex-grow">11. Health care: individual responsibility. See instructions. Full-year coverage or exemption </label>
+                         <input type="checkbox" id="full_year_coverage" name="full_year_coverage" class="h-4 w-4 text-indigo-600 border-gray-300 rounded ml-2">
+                        <input type="text" id="health_care_payment" name="health_care_payment" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Refund or Amount You Owe</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-semibold">
+                        <label for="refund" class="form-label flex-grow">12. If line 9 is larger than line 10 and line 11, subtract the sum of lines 10 and 11 from line 9. This is your refund.</label>
+                        <input type="text" id="refund" name="refund" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00" readonly>
+                    </div>
+                    <p class="text-sm text-gray-600 ml-6">If Form 8888 is attached, check here <input type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded align-middle ml-1"></p>
+
+                    <div class="ml-6 space-y-2">
+                        <p class="form-label">13a. Routing number</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <input type="text" name="routing_number" class="form-input col-span-2" placeholder="Enter routing number">
+                            <div>
+                                <label class="form-label block">b. Type:</label>
+                                <input type="checkbox" id="checking" name="account_type" value="checking" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                <label for="checking" class="checkbox-label">Checking</label>
+                                <input type="checkbox" id="savings" name="account_type" value="savings" class="h-4 w-4 text-indigo-600 border-gray-300 rounded ml-2">
+                                <label for="savings" class="checkbox-label">Savings</label>
+                            </div>
+                        </div>
+                        <label for="account_number" class="form-label">c. Account number</label>
+                        <input type="text" id="account_number" name="account_number" class="form-input md:w-2/3" placeholder="Enter account number">
+                    </div>
+
+                    <div class="flex items-center justify-between font-semibold">
+                        <label for="amount_you_owe" class="form-label flex-grow">14. Amount you owe. If the sum of lines 10 and 11 is larger than line 9, subtract line 9 from the sum of lines 10 and 11. For details on how to pay, see instructions.</label>
+                        <input type="text" id="amount_you_owe" name="amount_you_owe" class="form-input-sm ml-4 w-32 text-right" placeholder="0.00" readonly>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Third Party Designee</h2>
+                 <p class="text-sm text-gray-700 mb-2">Do you want to allow another person to discuss this return with the IRS? See instructions.</p>
+                 <div class="flex items-center space-x-4 mb-2">
+                    <div>
+                        <input type="radio" id="designee_yes" name="third_party_designee" value="yes" class="h-4 w-4 text-indigo-600 border-gray-300">
+                        <label for="designee_yes" class="checkbox-label">Yes. Complete fields below.</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="designee_no" name="third_party_designee" value="no" checked class="h-4 w-4 text-indigo-600 border-gray-300">
+                        <label for="designee_no" class="checkbox-label">No</label>
+                    </div>
+                 </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="designee_name" class="form-label">Designee's name</label>
+                        <input type="text" id="designee_name" name="designee_name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="designee_phone" class="form-label">Phone no.</label>
+                        <input type="tel" id="designee_phone" name="designee_phone" class="form-input">
+                    </div>
+                    <div>
+                        <label for="designee_pin" class="form-label">Personal identification number (PIN)</label>
+                        <input type="text" id="designee_pin" name="designee_pin" class="form-input">
+                    </div>
+                 </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Sign Here</h2>
+                <p class="text-xs text-gray-500 mb-4">Joint return? See instructions. Keep a copy for your records.</p>
+                <p class="text-sm text-gray-700 mb-4">Under penalties of perjury, I declare that I have examined this return and, to the best of my knowledge and belief, it is true, correct, and accurately lists all amounts and sources of income I received during the tax year. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="your_signature" class="form-label">Your signature</label>
+                        <input type="text" id="your_signature" name="your_signature" class="form-input bg-gray-200" placeholder="Sign here (not actually submittable)">
+                        <label for="your_occupation" class="form-label mt-2">Your occupation</label>
+                        <input type="text" id="your_occupation" name="your_occupation" class="form-input">
+                    </div>
+                    <div>
+                        <label for="spouse_signature" class="form-label">Spouse's signature (if joint return, both must sign)</label>
+                        <input type="text" id="spouse_signature" name="spouse_signature" class="form-input bg-gray-200" placeholder="Sign here (not actually submittable)">
+                         <label for="spouse_occupation" class="form-label mt-2">Spouse's occupation</label>
+                        <input type="text" id="spouse_occupation" name="spouse_occupation" class="form-input">
+                    </div>
+                    <div>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" id="date" name="date" class="form-input">
+                    </div>
+                     <div>
+                        <label for="phone_number" class="form-label">Your phone number (optional)</label>
+                        <input type="tel" id="phone_number" name="phone_number" class="form-input">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="form-section-title">Paid Preparer Use Only</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="preparer_name" class="form-label">Preparer's name</label>
+                        <input type="text" id="preparer_name" name="preparer_name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="preparer_signature" class="form-label">Preparer's signature</label>
+                        <input type="text" id="preparer_signature" name="preparer_signature" class="form-input bg-gray-200">
+                    </div>
+                    <div>
+                        <label for="preparer_firm_name" class="form-label">Firm's name</label>
+                        <input type="text" id="preparer_firm_name" name="preparer_firm_name" class="form-input">
+                    </div>
+                    <div>
+                        <label for="preparer_address" class="form-label">Firm's address</label>
+                        <input type="text" id="preparer_address" name="preparer_address" class="form-input">
+                    </div>
+                     <div>
+                        <label for="preparer_ptin" class="form-label">PTIN</label>
+                        <input type="text" id="preparer_ptin" name="preparer_ptin" class="form-input">
+                    </div>
+                     <div>
+                        <label for="preparer_firm_ein" class="form-label">Firm's EIN</label>
+                        <input type="text" id="preparer_firm_ein" name="preparer_firm_ein" class="form-input">
+                    </div>
+                     <div>
+                        <label for="preparer_phone" class="form-label">Phone no.</label>
+                        <input type="tel" id="preparer_phone" name="preparer_phone" class="form-input">
+                    </div>
+                </div>
+            </section>
+
+            <div class="mt-10 text-center">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out">
+                    Illustrative Submit (Does Nothing)
+                </button>
+            </div>
+        </form>
+        <footer class="mt-12 pt-8 border-t border-gray-300 text-center text-sm text-gray-600">
+            <p>For official tax forms and information, visit the IRS website at <a href="https://www.irs.gov" target="_blank" class="text-blue-600 hover:underline">www.irs.gov</a>.</p>
+            <p>This form is an HTML representation for educational purposes and is based on the discontinued Form 1040EZ (last used for tax year 2017).</p>
+        </footer>
+    </div>
+
+    <script>
+        // Basic client-side calculation for AGI (illustrative)
+        // In a real application, more robust validation and calculation would be needed.
+        const wagesInput = document.getElementById('wages');
+        const interestInput = document.getElementById('taxable_interest');
+        const unemploymentInput = document.getElementById('unemployment_comp');
+        const agiOutput = document.getElementById('agi');
+
+        const deductionAmountInput = document.getElementById('deduction_amount');
+        const taxableIncomeOutput = document.getElementById('taxable_income');
+
+        const federalTaxWithheldInput = document.getElementById('federal_tax_withheld');
+        const eicInput = document.getElementById('eic');
+        const totalPaymentsCreditsOutput = document.getElementById('total_payments_credits');
+
+        const taxAmountInput = document.getElementById('tax_amount');
+        const healthCarePaymentInput = document.getElementById('health_care_payment');
+        const refundOutput = document.getElementById('refund');
+        const amountOwedOutput = document.getElementById('amount_you_owe');
+
+
+        function calculateAGI() {
+            const wages = parseFloat(wagesInput.value) || 0;
+            const interest = parseFloat(interestInput.value) || 0;
+            const unemployment = parseFloat(unemploymentInput.value) || 0;
+            const totalAGI = wages + interest + unemployment;
+            agiOutput.value = totalAGI.toFixed(2);
+            calculateTaxableIncome(); // Recalculate taxable income when AGI changes
+            calculateRefundOrOwe();
+        }
+
+        function calculateTaxableIncome() {
+            const agi = parseFloat(agiOutput.value) || 0;
+            const deduction = parseFloat(deductionAmountInput.value) || 0;
+            const taxableIncome = Math.max(0, agi - deduction); // Cannot be negative
+            taxableIncomeOutput.value = taxableIncome.toFixed(2);
+            calculateRefundOrOwe();
+        }
+
+        function calculateTotalPayments() {
+            const withheld = parseFloat(federalTaxWithheldInput.value) || 0;
+            const eic = parseFloat(eicInput.value) || 0;
+            const totalPayments = withheld + eic;
+            totalPaymentsCreditsOutput.value = totalPayments.toFixed(2);
+            calculateRefundOrOwe();
+        }
+
+        function calculateRefundOrOwe() {
+            const totalPayments = parseFloat(totalPaymentsCreditsOutput.value) || 0;
+            const tax = parseFloat(taxAmountInput.value) || 0;
+            const healthCare = parseFloat(healthCarePaymentInput.value) || 0;
+
+            const totalTaxLiability = tax + healthCare;
+
+            if (totalPayments > totalTaxLiability) {
+                refundOutput.value = (totalPayments - totalTaxLiability).toFixed(2);
+                amountOwedOutput.value = "0.00";
+            } else {
+                amountOwedOutput.value = (totalTaxLiability - totalPayments).toFixed(2);
+                refundOutput.value = "0.00";
+            }
+        }
+
+
+        // Add event listeners to input fields
+        wagesInput.addEventListener('input', calculateAGI);
+        interestInput.addEventListener('input', calculateAGI);
+        unemploymentInput.addEventListener('input', calculateAGI);
+        deductionAmountInput.addEventListener('input', calculateTaxableIncome);
+
+        federalTaxWithheldInput.addEventListener('input', calculateTotalPayments);
+        eicInput.addEventListener('input', calculateTotalPayments);
+
+        taxAmountInput.addEventListener('input', calculateRefundOrOwe);
+        healthCarePaymentInput.addEventListener('input', calculateRefundOrOwe);
+
+        // Initial calculations on page load if there are default values (though unlikely here)
+        calculateAGI();
+        calculateTotalPayments();
+        // Note: Tax (line 10) would typically be looked up in a tax table based on taxable income (line 6).
+        // This script doesn't implement that lookup.
+    </script>
+
+</body>
+</html>
+
